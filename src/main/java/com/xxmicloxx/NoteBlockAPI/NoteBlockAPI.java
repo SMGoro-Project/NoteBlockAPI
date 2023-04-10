@@ -1,8 +1,6 @@
 package com.xxmicloxx.NoteBlockAPI;
 
 import com.xxmicloxx.NoteBlockAPI.songplayer.SongPlayer;
-import com.xxmicloxx.NoteBlockAPI.utils.MathUtils;
-import com.xxmicloxx.NoteBlockAPI.utils.Updater;
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.DrilldownPie;
 import org.bukkit.Bukkit;
@@ -11,10 +9,8 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredListener;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.scheduler.BukkitWorker;
 
-import java.io.IOException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.util.*;
@@ -186,19 +182,7 @@ public class NoteBlockAPI extends JavaPlugin {
 			}
 		}, 1);
 		
-		getServer().getScheduler().runTaskTimerAsynchronously(this, new Runnable() {
-			
-			@Override
-			public void run() {
-				try {
-					if (Updater.checkUpdate("19287", getDescription().getVersion())){
-						Bukkit.getLogger().info(String.format("[%s] New update available!", plugin.getDescription().getName()));
-					}
-				} catch (IOException e) {
-					Bukkit.getLogger().info(String.format("[%s] Cannot receive update from Spigot resource page!", plugin.getDescription().getName()));
-				}
-			}
-		}, 20*10, 20 * 60 * 60 * 24);
+
 	}
 
 	@Override
